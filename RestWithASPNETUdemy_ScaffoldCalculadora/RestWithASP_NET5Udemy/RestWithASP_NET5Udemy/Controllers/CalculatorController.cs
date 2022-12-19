@@ -17,10 +17,12 @@ namespace RestWithASP_NET5Udemy.Controllers
             _logger = logger;
         }
 
+        #region Rotas
+
         [HttpGet("sum/{firstNumber}/{secondNumber}")]
-        public IActionResult Get(string firstNumber, string secondNumber)
+        public IActionResult Sum(string firstNumber, string secondNumber)
         {
-            if(IsNumeric(firstNumber) && IsNumeric(secondNumber))
+            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
             {
                 var sum = OperacaoSum(firstNumber, secondNumber);
                 return Ok(sum.ToString());
@@ -32,7 +34,7 @@ namespace RestWithASP_NET5Udemy.Controllers
         [HttpGet("sub/{firstNumber}/{secondNumber}")]
         public IActionResult Sub(string firstNumber, string secondNumber)
         {
-            if(IsNumeric(firstNumber) && IsNumeric(secondNumber))
+            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
             {
                 var sub = OperacaoSub(firstNumber, secondNumber);
                 return Ok(sub.ToString());
@@ -43,7 +45,7 @@ namespace RestWithASP_NET5Udemy.Controllers
         [HttpGet("mult/{firstNumber}/{secondNumber}")]
         public IActionResult Mult(string firstNumber, string secondNumber)
         {
-            if(IsNumeric(firstNumber) && IsNumeric(secondNumber))
+            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
             {
                 decimal mult = OperacaoMult(firstNumber, secondNumber);
                 return Ok(mult.ToString());
@@ -55,7 +57,7 @@ namespace RestWithASP_NET5Udemy.Controllers
         [HttpGet("div/{firstNumber}/{secondNumber}")]
         public IActionResult Div(string firstNumber, string secondNumber)
         {
-            if(IsNumeric(firstNumber) && IsNumeric(secondNumber))
+            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
             {
                 decimal div = OperacaoDiv(firstNumber, secondNumber);
                 return Ok(div.ToString());
@@ -64,7 +66,7 @@ namespace RestWithASP_NET5Udemy.Controllers
             return BadRequest("Invalid Input");
         }
 
-        [HttpGet("div/{firstNumber}/{secondNumber}")]
+        [HttpGet("med/{firstNumber}/{secondNumber}")]
         public IActionResult Med(string firstNumber, string secondNumber)
         {
             if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
@@ -76,11 +78,19 @@ namespace RestWithASP_NET5Udemy.Controllers
             return BadRequest("Invalid Input");
         }
 
-        private decimal OperacaoMed(string firstNumber, string secondNumber)
+        [HttpGet("raiz/{firstNumber}")]
+        public IActionResult Raiz(string firstNumber)
         {
-            return (ConvertToDecimal(firstNumber) + ConvertToDecimal(secondNumber) / 2);
+            if (IsNumeric(firstNumber))
+            {
+                var raiz = OperacaoRaiz(firstNumber);
+                return Ok(raiz.ToString());
+            }
+
+            return BadRequest("Invalid Input");
         }
 
+        #endregion
 
         #region Private
 
@@ -104,6 +114,16 @@ namespace RestWithASP_NET5Udemy.Controllers
         private decimal OperacaoDiv(string firstNumber, string secondNumber)
         {
             return ConvertToDecimal(firstNumber) / ConvertToDecimal(secondNumber);
+        }
+
+        private decimal OperacaoMed(string firstNumber, string secondNumber)
+        {
+            return (ConvertToDecimal(firstNumber) + ConvertToDecimal(secondNumber) / 2);
+        }
+
+        private double OperacaoRaiz(string firstNumber)
+        {
+            return Math.Sqrt((double)ConvertToDecimal(firstNumber));
         }
 
         #endregion
@@ -136,7 +156,6 @@ namespace RestWithASP_NET5Udemy.Controllers
         #endregion
 
         #endregion
-
 
     }
 }
