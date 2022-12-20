@@ -34,6 +34,9 @@ namespace RestWithASP_NET5Udemy
             var conection = Configuration["MySQLConection:MySQLConectionString"];
             services.AddDbContext<MySQLContext>(options => options.UseMySql(conection));
 
+            //Versionamento API
+            services.AddApiVersioning();
+
             //Injeção de Dependencia
             services.AddScoped<IPersonService, PersonServiceImplementation>();
         }
