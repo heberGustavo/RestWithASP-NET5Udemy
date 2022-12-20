@@ -1,0 +1,3 @@
+﻿INSERT INTO `person` (`id`, `address`, `first_name`, `gender`, `last_name`) VALUES (1, 'São Paulo - Brasil', 'Heber', 'Women', 'Gustavo');
+INSERT INTO `person` (`id`, `address`, `first_name`, `gender`, `last_name`) VALUES (2, 'São Paulo - Brasil', 'Rosimar', 'Woman', 'Barbosa');
+INSERT INTO `person` (`id`, `address`, `first_name`, `gender`, `last_name`) VALUES (3, 'São Paulo - Brasil', 'Priscila', 'Woman', 'Marques');
