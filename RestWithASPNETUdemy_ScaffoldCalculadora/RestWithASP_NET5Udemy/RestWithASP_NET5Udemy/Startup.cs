@@ -2,10 +2,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using RestWithASP_NET5Udemy.Model.Context;
 using RestWithASP_NET5Udemy.Services;
 using RestWithASP_NET5Udemy.Services.Implementation;
 using System;
@@ -28,6 +30,11 @@ namespace RestWithASP_NET5Udemy
         {
             services.AddControllers();
 
+            //Conexão banco de dados
+            var conection = Configuration["MySQLConection:MySQLConectionString"];
+            services.AddDbContext<MySQLContext>(options => options.UseMySql(conection));
+
+            //Injeção de Dependencia
             services.AddScoped<IPersonService, PersonServiceImplementation>();
         }
 
