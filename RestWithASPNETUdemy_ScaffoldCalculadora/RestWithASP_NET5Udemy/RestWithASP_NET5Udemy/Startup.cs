@@ -49,7 +49,10 @@ namespace RestWithASP_NET5Udemy
 
             //Injeção de Dependencia
             services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();
+            services.AddScoped<IBookBussiness, BookBusinessImplementation>();
+
             services.AddScoped<IPersonRepository, PersonRepositoryImplementation>();
+            services.AddScoped<IBookRepository, BookRepositoryImplementation>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

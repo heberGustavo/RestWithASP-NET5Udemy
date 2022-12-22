@@ -44,7 +44,7 @@ namespace RestWithASP_NET5Udemy.Repository.Implementation
 
         public Person Update(Person person)
         {
-            //Se não existir, cria uma nova pessoa
+            //Se não existir
             if (!Exist(person.Id)) return null;
 
             var result = _context.Persons.SingleOrDefault(p => p.Id.Equals(person.Id));
