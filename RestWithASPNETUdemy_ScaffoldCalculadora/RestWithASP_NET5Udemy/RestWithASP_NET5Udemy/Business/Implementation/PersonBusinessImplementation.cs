@@ -1,14 +1,14 @@
 ﻿using RestWithASP_NET5Udemy.Model;
-using RestWithASP_NET5Udemy.Repository;
+using RestWithASP_NET5Udemy.Repository.Generic;
 using System.Collections.Generic;
 
 namespace RestWithASP_NET5Udemy.Business.Implementation
 {
     public class PersonBusinessImplementation : IPersonBusiness
     {
-        private readonly IPersonRepository _repository;
+        private readonly IRepository<Person> _repository;
 
-        public PersonBusinessImplementation(IPersonRepository context)
+        public PersonBusinessImplementation(IRepository<Person> context)
         {
             _repository = context;
         }
