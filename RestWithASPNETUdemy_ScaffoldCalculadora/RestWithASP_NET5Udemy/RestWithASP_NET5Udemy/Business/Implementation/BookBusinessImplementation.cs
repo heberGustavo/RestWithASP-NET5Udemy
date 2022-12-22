@@ -1,5 +1,6 @@
 ﻿using RestWithASP_NET5Udemy.Model;
 using RestWithASP_NET5Udemy.Repository;
+using RestWithASP_NET5Udemy.Repository.Generic;
 using RestWithASP_NET5Udemy.Repository.Implementation;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,9 @@ namespace RestWithASP_NET5Udemy.Business.Implementation
 {
     public class BookBusinessImplementation : IBookBussiness
     {
-        private readonly IBookRepository _repository;
+        private readonly IRepository<Book> _repository;
 
-        public BookBusinessImplementation(IBookRepository repository)
+        public BookBusinessImplementation(IRepository<Book> repository)
         {
             _repository = repository;
         }

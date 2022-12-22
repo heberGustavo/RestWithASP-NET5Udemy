@@ -8,6 +8,7 @@ using RestWithASP_NET5Udemy.Business;
 using RestWithASP_NET5Udemy.Business.Implementation;
 using RestWithASP_NET5Udemy.Model.Context;
 using RestWithASP_NET5Udemy.Repository;
+using RestWithASP_NET5Udemy.Repository.Generic;
 using RestWithASP_NET5Udemy.Repository.Implementation;
 using Serilog;
 using System;
@@ -52,7 +53,9 @@ namespace RestWithASP_NET5Udemy
             services.AddScoped<IBookBussiness, BookBusinessImplementation>();
 
             services.AddScoped<IPersonRepository, PersonRepositoryImplementation>();
-            services.AddScoped<IBookRepository, BookRepositoryImplementation>();
+
+            services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
+            
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

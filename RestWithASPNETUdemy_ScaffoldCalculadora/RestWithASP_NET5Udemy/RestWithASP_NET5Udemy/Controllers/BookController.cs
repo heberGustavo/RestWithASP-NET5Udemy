@@ -42,7 +42,13 @@ namespace RestWithASP_NET5Udemy.Controllers
         public IActionResult Put([FromBody] Book book)
         {
             if (book == null) return BadRequest();
-            return Ok(_bookBussiness.Update(book));
+
+            var result = _bookBussiness.Update(book);
+            if (result == null) return NotFound();
+
+            return Ok(result);
+
+
         }
 
         [HttpDelete("{id}")]
