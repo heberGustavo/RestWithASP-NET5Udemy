@@ -22,13 +22,6 @@ namespace RestWithASP_NET5Udemy.Data.Converter.Implementations
             };
         }
 
-        public List<Book> Parse(List<BookVO> origin)
-        {
-            if (origin == null) return null;
-
-            return origin.Select(item => Parse(item)).ToList();
-        }
-
         public BookVO Parse(Book origem)
         {
             if (origem == null) return null;
@@ -45,7 +38,14 @@ namespace RestWithASP_NET5Udemy.Data.Converter.Implementations
 
         public List<BookVO> Parse(List<Book> origin)
         {
-            if (origin != null) return null;
+            if (origin == null) return null;
+            return origin.Select(item => Parse(item)).ToList();
+        }
+
+        public List<Book> Parse(List<BookVO> origin)
+        {
+            if (origin == null) return null;
+
             return origin.Select(item => Parse(item)).ToList();
         }
     }
