@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RestWithASP_NET5Udemy.Business;
-using RestWithASP_NET5Udemy.Model;
+using RestWithASP_NET5Udemy.Data.VO;
 
 namespace RestWithASP_NET5Udemy.Controllers
 {
@@ -32,14 +32,14 @@ namespace RestWithASP_NET5Udemy.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] Book book)
+        public IActionResult Post([FromBody] BookVO book)
         {
             if (book == null) return BadRequest();
             return Ok(_bookBussiness.Create(book));
         }
 
         [HttpPut]
-        public IActionResult Put([FromBody] Book book)
+        public IActionResult Put([FromBody] BookVO book)
         {
             if (book == null) return BadRequest();
 
